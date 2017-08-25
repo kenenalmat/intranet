@@ -13,8 +13,7 @@ def install():
 
     apt_get_update()
 
-    apt_get("build-essential", "git", "wget", "python-dev")
-
+    apt_get("build-essential", "git", "wget", "python-dev", "libpq-dev", "python-dev", "libxml2-dev", "libxslt1-dev", "libldap2-dev", "libsasl2-dev", "libffi-dev")
     git_install()
 
     run("wget -qO- https://get.docker.com/ | sh")
