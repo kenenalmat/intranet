@@ -30,4 +30,4 @@ def git_install():
         global repository
         result = run("cd ~; git clone {0}".format(env.repository))
         if not result.return_code == 0:
-            run("cd ~/mlm; git pull")
+            run("cd ~/intranet; git pull")

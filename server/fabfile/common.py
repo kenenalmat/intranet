@@ -22,5 +22,5 @@ def git_pull():
     """
     Updates the repository
     """
-    run("cd ~/mlm/; git pull")
+    run("cd ~/intranet/; git pull")
     
