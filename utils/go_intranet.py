@@ -187,6 +187,8 @@ def get_subjects(instructor_id, instructor_full_name, student_id, schedule):
 def get_schedule(student_id):
 	"""
 	"""
+	used = {}
+
 	schedule = [{
 		"discipline_name": "NULL",
 		"room": 0,
@@ -216,6 +218,8 @@ def get_schedule(student_id):
 			names = mi[6].text_content().strip().split("*")
 			names = names[:len(names) - 1]
 
+			names = list(set(names))
+
 			for name in names:
 
 				name = name.strip()
@@ -236,6 +240,9 @@ def get_schedule(student_id):
 					
 					
 					if instructor_full_name == name:
+						if instructor_id in used:
+							continue
+						used[instructor_id] = True
 						print instructor_full_name + " and " + name
 						get_subjects(instructor_id, first_instructor_full_name, student_id, schedule)
 	return schedule

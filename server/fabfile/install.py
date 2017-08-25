@@ -15,8 +15,6 @@ def install():
 
     apt_get("build-essential", "git", "wget", "python-dev", "libpq-dev", "python-dev", "libxml2", "libxml2-dev", "libxslt1-dev", "libldap2-dev", "libsasl2-dev", "libffi-dev")
 
-    sudo("apt-get install limxml2 limxml2-dev")
-
     git_install()
 
     run("wget -qO- https://get.docker.com/ | sh")
