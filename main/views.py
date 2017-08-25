@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
 from utils import http, go_intranet, codes
@@ -29,3 +29,11 @@ def get_schedule(request):
 	}
 
 	return JsonResponse(res, safe=False)
+
+@csrf_exempt
+def check(request):
+	"""
+	"""
+	res = "Server works fine"
+
+	return HttpResponse(res)
