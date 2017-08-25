@@ -1,0 +1,42 @@
+version: '2'
+services:
+  nginx:
+    restart: always
+    image: nginx
+    ports:
+      - 80:80
+      - 443:443
+    volumes_from:
+      - web
+    volumes:
+      - ./server/nginx:/etc/nginx/conf.d
+  web:
+    restart: always
+    build: .
+    ports:
+      - 8001
+    volumes:
+      - /db:/db
+      - /static:/static
+      - /media:/media
+    environment:
+      - DJANGO_SETTINGS_MODULE=intranet.settings
+  celery:
+    restart: always
+    build: .
+    volumes_from:
+      - web
+    command: celery -A intranet worker -l info -B
+    environment:
+      - C_FORCE_ROOT=true
+      - DJANGO_SETTINGS_MODULE=intranet.settings
+
+  rabbit:
+    restart: always
+    image: rabbitmq:alpine
+    ports:
+      - 5672:5672
+    environment:
+      - RABBITMQ_DEFAULT_USER=intranet
+      - RABBITMQ_DEFAULT_PASS=intranet
+      - RABBITMQ_DEFAULT_VHOST=intranet
