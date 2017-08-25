@@ -245,6 +245,7 @@ def get_schedule(student_id):
 						used[instructor_id] = True
 						print instructor_full_name + " and " + name
 						get_subjects(instructor_id, first_instructor_full_name, student_id, schedule)
+	used = {}
 	return schedule
 
 update_instructors()
