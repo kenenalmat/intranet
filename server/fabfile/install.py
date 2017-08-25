@@ -13,7 +13,7 @@ def install():
 
     apt_get_update()
 
-    apt_get("build-essential", "git", "wget")
+    apt_get("build-essential", "git", "wget", "python-dev")
 
     git_install()
 
