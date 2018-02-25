@@ -5,7 +5,7 @@ from w3lib.html import replace_entities
 import lxml.html as lh
 import mechanize, codecs, chardet, urllib
 
-import sys, html, json
+import sys, json
 reload(sys)
 sys.setdefaultencoding('utf8')
 
